@@ -4,23 +4,49 @@
         <title>Test page</title>
         <link rel="stylesheet" href="../dist/css/bootstrap.min.css">
         <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+        <script src="js/jquery-1.11.2.js"></script>
+
+        <script src="../dist/js/bootstrap.js"></script>
+        <script src="js/bootstrap3-typeahead.js"></script>
+        <script src="js/main.js"></script>
         <style>
         .icon {
             font-size: 150pt;
+        }
+        .section-sm .icon {
+            font-size: 50pt;
+        }
+        .box-event {
+            min-height: 350pt;
         }
         </style>
     </head>
     <body>
         <nav class="navbar navbar-primary navbar-fixed-top">
-          <div class="container-fluid">
+          <div class="container">
             <div class="navbar-header">
-              <a class="navbar-brand" href="#">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                  </button>
+                <a class="navbar-brand" href="#">
                 <img alt="Brand" src="images/logo.png">
               </a>
             </div>
+
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+              
+              <ul class="nav navbar-nav navbar-right">
+                <li><a href="#"><i class="fa fa-key"></i> Logga in på mitt konto</a></li>
+                <li><a href="#"><i class="fa fa-key"></i> Skapa konto</a></li>
+                
+              </ul>
+            </div><!-- /.navbar-collapse -->
           </div>
         </nav>
-        <div class="glass glass-default" style="background-image: url('images/speaker.jpg'); background-size: cover; height: 300pt">
+        <div class="glass glass-default" style="background-image: url('images/header_bg_biljettplatsen.jpg'); background-size: cover; height: 300pt">
             <div class="glass-content">
 
                 <div class="container">
@@ -29,16 +55,18 @@
                             <div class="section-content">
                                 <form method="POST">
                                     <div class="row">
-                                        <div class="col-md-6">
-                                                <h2>Sök</h2>
+                                        <div class="col-md-12">
+                                                <h2>Hitta ditt evenemang</h2>
                                             <div class="input-group">
-                                                <input class="form-control" placeholder="Sök på föreläsare, event eller ort.">
+                                                <input class="form-control typeahead" type="text" data-provide="typeahead" placeholder="Sök på föreläsare, event eller ort.">
+                                               
                                                 <div class="input-group-btn">
-                                                    <button type="submit" class="btn btn-success">Find</button>
+                                                    <button type="submit" class="btn btn-primary">Hitta evenemang</button>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-md-6">
+
+                                        <div style="display: none" class="col-md-6">
                                             <h2>Eller välj ort </h2>
                                             <select id="kommunerSelect" name="municipalitys"  class="form-control">
                                                   <option value="">Alla kommuner</option>
@@ -96,37 +124,136 @@
                 </div>
             </div>
         </div>
-        <div class="section section-alternative">
+        <div class="section section-alternative section-sm">
             <div class="section-content" style="text-align: center">
                 <div class="container">
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-4">
                             <i class="fa fa-key icon"></i>
-                            <h2>Skapa ditt eget konto</h2>
-                            <p>Skapa ett konto på biljettplatsen. Du får en överblick över dina bokningar och kan skriva ut din biljett.</p>
+                            <h3>Skapa ett konto på biljettplatsen och överblick över dina bokningar samt skriva ut din biljett.</p>
                             <a class="btn btn-primary">Skapa konto</a>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-4">
                             <i class="fa fa-phone icon"></i>
-                            <h2>Telefonbokning</h2>
-                            <p>Ring oss idag</p>
+                            <h3>Ring oss idag.</h3>
+                            <p>Endast bokning av biljetter</p>
                             <p><a class="btn btn-primary" href="callto:0771121400">0771-12 14 00</a></p>
                            
+                        </div>
+                        <div class="col-md-4">
+                            <i class="fa fa-envelope icon"></i>
+                            <h3>Prenumerera</h3>
+                            <p> på vårat nyhetsbrev</p>
+                            <form method="POST">
+                                <div class="input-group">
+                                    <input  type="email" name="email" class="form-control" placeholder="dittnamn@example.com">
+                                   
+                                    <div class="input-group-btn">
+                                        <button type="submit" class="btn btn-primary">Prenumerera</button>
+                                    </div>
+                                </div>
+                            </form>
+                           
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="section section-highlight">
+            <div class="section-content">
+                <div class="container">
+                    <div class="col-md-12">
+                        <h1>Höjdpunkter</h1>
+                        <div id="carousel-featured" class="carousel slide" data-ride="carousel">
+                          <!-- Indicators -->
+                          <ol class="carousel-indicators">
+                            <li data-target="#carousel-featured" data-slide-to="0" class="active"></li>
+                          </ol>
+                          <div class="carousel-inner" role="listbox">
+                                <div class="item active">
+                                  <div class="row">
+                                    <div class="col-md-4">
+                                        <img src="http://www.biljettplatsen.se/uploads/temabild1351_large.jpg" width="100%">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <h1>Hur svårt kan det vara?</h1>
+                                        <p>Mia har skrivit åtta böcker och hållit hundratals utbildningar och tusentals föreläsningar i ämnet ledarskap och personlig utveckling. Mias mål är att med hjälp av sina metoder visa att förändring är möjlig. Det går att på ett enkelt sätt träna upp sin inre trygghet precis som vår fysiska kondition!</p>
+                                        <a class="btn btn-primary">Läs mer</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <h3>Föredrag i fokus</h3><br>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <article class="box box-default box-event">
+                                    <div class="box-header" style="background-image: url('images/speaker.jpg'); background-size: 100%; height: 100pt"></div>
+                                    <div class="box-content">
+                                        <h3>Att leva och fungera</h3>
+                                        <p>Högskolan i Skövde, 5 december 2015</p>
+                                    </div>
+                                </article>
+                            </div>
+                            <div class="col-md-3">
+
+                                <article class="box box-default box-event">
+                                    <div class="box-header" style="background-image: url('images/speaker.jpg'); background-size: 100%; height: 100pt"></div>
+                                    
+                                    <div class="box-content">
+
+                                        <h3>Asperger och sexualitet</h3>
+                                        <p>Campus Lidköping den 18 januari 2016</p>
+                                        <p>En föreläsning om autism och sexualitet.</p>
+                                    </div>
+                                </article>
+                            </div>
+                            <div class="col-md-3">
+
+                                <article class="box box-default box-event">
+                                    <div class="box-header" style="background-image: url('images/speaker.jpg'); background-size: 100%; height: 100pt"></div>
+                                    
+                                    <div class="box-content">
+
+                                        <h3>Asperger och sexualitet</h3>
+                                        <p>Campus Lidköping den 18 januari 2016</p>
+                                        <p>En föreläsning om autism och sexualitet.</p>
+                                    </div>
+                                </article>
+                            </div>
+                            <div class="col-md-3">
+
+                                <article class="box box-default box-event">
+                                    <div class="box-header" style="background-image: url('images/speaker.jpg'); background-size: 100%; height: 100pt"></div>
+                                    
+                                    <div class="box-content">
+
+                                        <h3>Asperger och sexualitet</h3>
+                                        <p>Campus Lidköping den 18 januari 2016</p>
+                                        <p>En föreläsning om autism och sexualitet.</p>
+                                    </div>
+                                </article>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        
         <div class="section">
             <div class="section-content">
                 <div class="container">
                     
+
                     <div class="row">
-                        <div class="col-md-12">
-                            <h3>Events near Lidköping <a class="btn btn-info pull-right">Change</a></h3><br>
+                        <div class="col-md-12   ">
+                            <h3>Events near Lidköping <a class="btn btn-info ">Ändra plats</a></h3><br>
                             <div class="row">
                                 <div class="col-md-4">
-                                    <article class="box box-default">
+                                    <article class="box box-default box-event">
                                         <div class="box-header" style="background-image: url('images/speaker.jpg'); background-size: 100%; height: 100pt"></div>
                                         <div class="box-content">
                                             <h3>Att leva och fungera</h3>
@@ -136,7 +263,20 @@
                                 </div>
                                 <div class="col-md-4">
 
-                                    <article class="box box-default">
+                                    <article class="box box-default box-event">
+                                        <div class="box-header" style="background-image: url('images/speaker.jpg'); background-size: 100%; height: 100pt"></div>
+                                        
+                                        <div class="box-content">
+
+                                            <h3>Asperger och sexualitet</h3>
+                                            <p>Campus Lidköping den 18 januari 2016</p>
+                                            <p>En föreläsning om autism och sexualitet.</p>
+                                        </div>
+                                    </article>
+                                </div>
+                                <div class="col-md-4">
+
+                                    <article class="box box-default box-event">
                                         <div class="box-header" style="background-image: url('images/speaker.jpg'); background-size: 100%; height: 100pt"></div>
                                         
                                         <div class="box-content">
@@ -148,6 +288,105 @@
                                     </article>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+
+        <div class="section section-alternative">
+            <div class="section-content">
+                <div class="container">
+                    <div role="tabpanel">
+
+                      <!-- Nav tabs -->
+                      <ul class="nav nav-tabs" role="tablist">
+                        <li role="presentation" class="active"><a href="#popular" aria-controls="popular" role="tab" data-toggle="tab">Populära evenemang</a></li>
+                        <li role="presentation" class="active"><a href="#upcoming" aria-controls="upcoming" role="tab" data-toggle="tab">Kommande</a></li>
+                        <li style="float: right"><a class="btn btn-primary">Visa fler</a></Li>
+                      </ul>
+
+                      <!-- Tab panes -->
+                      <div class="tab-content">
+                            <div role="tabpanel" class="tab-pane active" id="popular">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <article class="box box-default">
+                                            <div class="box-header" style="background-image: url('images/speaker.jpg'); background-size: 100%; height: 100pt"></div>
+                                            <div class="box-content">
+                                                <p>Att leva och fungera</p>
+                                                <b><i class="fa fa-globe"></i> Falun</b>
+                                                <p><i class="fa fa-clock-o"></i> 2015-01-01 18:00</p>
+                                                <p class="badge badge-success">Platser kvar</p><br>
+                                                <a class="btn btn-primary">Läs mer</a>
+                                            </div>
+                                        </article>
+
+                                    </div>
+                                    <div class="col-md-3">
+                                        <article class="box box-default">
+                                            <div class="box-header" style="background-image: url('images/speaker.jpg'); background-size: 100%; height: 100pt"></div>
+                                            <div class="box-content">
+                                                <p>Att leva och fungera</p>
+                                                <b><i class="fa fa-globe"></i> Falun</b>
+                                                <p><i class="fa fa-clock-o"></i> 2015-01-01 18:00</p>
+                                                <p class="badge badge-success">Platser kvar</p><br>
+                                                <a class="btn btn-primary">Läs mer</a>
+                                            </div>
+                                        </article>
+                                        
+                                    </div>
+                                    <div class="col-md-3">
+                                        <article class="box box-default">
+                                            <div class="box-header" style="background-image: url('images/speaker.jpg'); background-size: 100%; height: 100pt"></div>
+                                            <div class="box-content">
+                                                <p>Att leva och fungera</p>
+                                                <b><i class="fa fa-globe"></i> Falun</b>
+                                                <p><i class="fa fa-clock-o"></i> 2015-01-01 18:00</p>
+                                                <p class="badge badge-success">Platser kvar</p><br>
+                                                <a class="btn btn-primary">Läs mer</a>
+                                            </div>
+                                        </article>
+                                        
+                                    </div>
+                                    <div class="col-md-3">
+                                        <article class="box box-default">
+                                            <div class="box-header" style="background-image: url('images/speaker.jpg'); background-size: 100%; height: 100pt"></div>
+                                            <div class="box-content">
+                                                <p>Att leva och fungera</p>
+                                                <b><i class="fa fa-globe"></i> Falun</b>
+                                                <p><i class="fa fa-clock-o"></i> 2015-01-01 18:00</p>
+                                                <p class="badge badge-success">Platser kvar</p><br>
+                                                <a class="btn btn-primary">Läs mer</a>
+                                            </div>
+                                        </article>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div role="tabpanel" class="tab-pane" id="upcoming">
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="section section-primary" style="background-image: url('images/header_bg_biljettplatsen.jpg'); background-size: cover">
+            <div class="section-content">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <p>Powered by Sweden Conference Group AB. All rights reserved</p>
+                        </div>
+                        <div class="col-md-6">
+                            <ul class="nav">
+                                <li><a href="#">Alla föredrag</a></li>
+                                <li><a href="#">Om biljettplatsen</a></li>
+                                <li><a href="#">Kontakta oss</a></li>
+                            </ul>
                         </div>
                     </div>
                 </div>

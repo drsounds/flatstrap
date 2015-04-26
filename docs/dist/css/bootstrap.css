@@ -3642,10 +3642,26 @@ input[type="button"].btn-block {
   padding: 100pt 0;
 }
 .section-primary {
+  color: white;
   background: #c49d07;
+}
+.section-primary a {
+  color: white;
 }
 .section-alternative {
   background: #e9e9e9;
+}
+.section-sm {
+  font-size: 15pt;
+}
+.section-sm .section-content {
+  padding: 25pt 0;
+}
+.section-sm * {
+  font-size: 15pt;
+}
+.section-highlight {
+  background-color: #fff;
 }
 .fade {
   opacity: 0;
