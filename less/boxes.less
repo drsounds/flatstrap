@@ -1,0 +1,25 @@
+.box {
+    margin-top: 5pt;
+    display: block;
+    border-radius: @box-border-radius;
+}
+.box-content {
+    padding: @box-content-padding;
+}
+.box-header {
+    padding: @box-header-padding;
+}
+
+.box-default {
+    .box-variant(@box-default-bg, @box-default-color);
+}
+.box-default .box-header {
+    .box-header-variant(@box-default-header-bg, @box-default-header-color);
+}
+
+.box-info {
+    .box-variant(@box-info-bg, @box-info-color);
+}
+.box-info .box-header {
+    .box-header-variant(@box-info-header-bg, @box-info-header-color);
+}

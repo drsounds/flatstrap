@@ -2,6 +2,22 @@
 // Variables
 // --------------------------------------------------
 
+@font-face {
+    font-family: "Open Sans Regular";
+    src: url("../fonts/OpenSans-Regular.ttf");
+}
+
+@font-face {
+    font-family: "Open Sans Light";
+    src: url("../fonts/OpenSans-Light.ttf");
+}
+
+@font-face {
+    font-family: "Open Sans Extrabold";
+    src: url("../fonts/OpenSans-Extrabold.ttf");
+}
+
+
 
 //== Colors
 //
@@ -14,7 +30,7 @@
 @gray-light:             lighten(@gray-base, 46.7%); // #777
 @gray-lighter:           lighten(@gray-base, 93.5%); // #eee
 
-@brand-primary:         darken(#428bca, 6.5%); // #337ab7
+@brand-primary:         rgba(206, 165, 7, 1); // #337ab7
 @brand-success:         #5cb85c;
 @brand-info:            #5bc0de;
 @brand-warning:         #f0ad4e;
@@ -26,7 +42,7 @@
 //## Settings for some of the most global styles.
 
 //** Background color for `<body>`.
-@body-bg:               #fff;
+@body-bg:               #eee;
 //** Global text color on `<body>`.
 @text-color:            @gray-dark;
 
@@ -42,13 +58,13 @@
 //
 //## Font, line-height, and color for body text, headings, and more.
 
-@font-family-sans-serif:  "Helvetica Neue", Helvetica, Arial, sans-serif;
+@font-family-sans-serif:  "Open Sans Light", Helvetica, Arial, sans-serif;
 @font-family-serif:       Georgia, "Times New Roman", Times, serif;
 //** Default monospace fonts for `<code>`, `<kbd>`, and `<pre>`.
 @font-family-monospace:   Menlo, Monaco, Consolas, "Courier New", monospace;
 @font-family-base:        @font-family-sans-serif;
 
-@font-size-base:          14px;
+@font-size-base:          15pt;
 @font-size-large:         ceil((@font-size-base * 1.25)); // ~18px
 @font-size-small:         ceil((@font-size-base * 0.85)); // ~12px
 
@@ -87,8 +103,8 @@
 //
 //## Define common padding and border radius sizes and more. Values based on 14px text and 1.428 line-height (~20px to start).
 
-@padding-base-vertical:     6px;
-@padding-base-horizontal:   12px;
+@padding-base-vertical:     10pt;
+@padding-base-horizontal:   15pt;
 
 @padding-large-vertical:    10px;
 @padding-large-horizontal:  16px;
@@ -145,28 +161,28 @@
 @btn-font-weight:                normal;
 
 @btn-default-color:              #333;
-@btn-default-bg:                 #fff;
-@btn-default-border:             #ccc;
+@btn-default-bg:                 #eee;
+@btn-default-border:             #eee;
 
 @btn-primary-color:              #fff;
 @btn-primary-bg:                 @brand-primary;
-@btn-primary-border:             darken(@btn-primary-bg, 5%);
+@btn-primary-border:             @btn-primary-bg; //darken(@btn-primary-bg, 5%);
 
 @btn-success-color:              #fff;
 @btn-success-bg:                 @brand-success;
-@btn-success-border:             darken(@btn-success-bg, 5%);
+@btn-success-border:             @btn-success-bg; //darken(@btn-success-bg, 5%);
 
 @btn-info-color:                 #fff;
 @btn-info-bg:                    @brand-info;
-@btn-info-border:                darken(@btn-info-bg, 5%);
+@btn-info-border:                @btn-info-bg; //darken(@btn-info-bg, 5%);
 
 @btn-warning-color:              #fff;
 @btn-warning-bg:                 @brand-warning;
-@btn-warning-border:             darken(@btn-warning-bg, 5%);
+@btn-warning-border:             @brand-warning; //darken(@btn-warning-bg, 5%);
 
 @btn-danger-color:               #fff;
 @btn-danger-bg:                  @brand-danger;
-@btn-danger-border:              darken(@btn-danger-bg, 5%);
+@btn-danger-border:              @btn-danger-bg; //darken(@btn-danger-bg, 5%);
 
 @btn-link-disabled-color:        @gray-light;
 
@@ -381,6 +397,32 @@
 @navbar-default-toggle-hover-bg:           #ddd;
 @navbar-default-toggle-icon-bar-bg:        #888;
 @navbar-default-toggle-border-color:       #ddd;
+
+
+// Navbar primary
+
+@navbar-primary-color:             white;
+@navbar-primary-bg:                @brand-primary;
+@navbar-primary-border:            darken(@navbar-primary-bg, 6.5%);
+
+// Navbar links
+@navbar-primary-link-color:                white;
+@navbar-primary-link-hover-color:          white;
+@navbar-primary-link-hover-bg:             lighten(@navbar-primary-bg, 2%);
+@navbar-primary-link-active-color:         white; //darken(@navbar-primary-bg, 2%);
+@navbar-primary-link-active-bg:            darken(@navbar-primary-bg, 6.5%);
+@navbar-primary-link-disabled-color:       darken(@navbar-primary-bg, 6.5%);
+@navbar-primary-link-disabled-bg:          transparent;
+
+// Navbar brand label
+@navbar-primary-brand-color:               @navbar-primary-link-color;
+@navbar-primary-brand-hover-color:         darken(@navbar-primary-brand-color, 10%);
+@navbar-primary-brand-hover-bg:            transparent;
+
+// Navbar toggle
+@navbar-primary-toggle-hover-bg:           lighten(@navbar-primary-bg, 2%);
+@navbar-primary-toggle-icon-bar-bg:        lighten(@navbar-primary-bg, 5%);
+@navbar-primary-toggle-border-color:       lighten(@navbar-primary-bg, 8%);
 
 
 // Inverted navbar
@@ -860,3 +902,53 @@
 @dl-horizontal-offset:        @component-offset-horizontal;
 //** Horizontal line color.
 @hr-border:                   @gray-lighter;
+
+
+//== box-shadow: 
+//
+//##
+
+@box-default-bg: lighten(@body-bg, 12%);
+@box-default-color: @text-color;
+@box-default-header-bg: @brand-primary;
+@box-default-header-color: white;
+@box-info-bg: darken(@body-bg, 2%);
+@box-info-color: @text-color;
+@box-info-header-bg: @brand-info;
+@box-info-header-color: white;
+@box-border-radius: @border-radius-base;
+@box-header-padding: 13pt;
+@box-content-padding: 13pt;
+
+//== Glass
+//
+//##
+
+@glass-font-size: @font-size-large;
+@glass-background-attachment: fixed;
+@glass-background-size: cover;
+@glass-text-align: center;
+@glass-min-height: 300pt;
+
+
+@glass-content-padding: 51pt;
+@glass-content-color: white;
+
+@glass-primary-bg: @brand-primary;
+@glass-primary-color: white;
+
+@glass-default-bg: #666;
+@glass-default-color: white;
+
+@glass-content-h1-font-size: 35pt;
+@glass-content-h1-font-family: "Open Sans Extrabold";
+@glass-content-h1-font-weight: 900;
+@glass-content-h1-color: white;
+
+//== Section
+//
+//##
+
+@section-content-padding: 100pt 0pt;
+@section-alternative-bg: darken(@body-bg, 2%);
+@section-primary-bg: darken(@brand-primary, 2%);
